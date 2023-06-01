@@ -135,7 +135,7 @@ jobs:
       - name: Get pnpm cache directory path
         if: steps.package_manager.outputs.name == 'pnpm'
         id: pnpm-cache-dir-path
-        run: echo "dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+        run: echo "text<<EOF"$'\n'"dir=$(pnpm store path)"$'\n'EOF >> $GITHUB_OUTPUT
 
       - name: Use the node_modules cache if available [pnpm]
         if: steps.package_manager.outputs.name == 'pnpm'
